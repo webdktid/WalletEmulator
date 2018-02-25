@@ -18,7 +18,28 @@ namespace WalletEmulator
     {
         private MiniWebServer _webserver;
         private List<Transaction> _transactions;
-        private Dictionary<string, string> _currencies; 
+        private Dictionary<string, string> _currencies;
+        private Dictionary<string, double> _feeDictionary;
+
+        private void SetFee(string currency, double value)
+        {
+            if (!_feeDictionary.ContainsKey(currency))
+            {
+                _feeDictionary.Add(currency, value);
+                return;
+            }
+            _feeDictionary[currency] = value;
+        }
+
+        private double GetFee(string currency)
+        {
+            if (_feeDictionary.ContainsKey(currency))
+            {
+                return _feeDictionary[currency];
+            }
+            return 0;
+        }
+
 
         public FormMain()
         {
@@ -56,6 +77,7 @@ namespace WalletEmulator
    
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             _currencies = new Dictionary<string, string>();
+            _feeDictionary = new Dictionary<string, double>();
 
             var appSettings = ConfigurationManager.AppSettings;
 
@@ -85,7 +107,8 @@ namespace WalletEmulator
                     confirmations = 11,
                     time = Convert.ToInt32(UnixTime.GetFromDateTime(DateTime.UtcNow.AddMinutes(-11))),
                     txid = key + "-" + Guid.NewGuid(),
-                    account = ""
+                    account = "",
+
                 };
                 _transactions.Add(t);
             }
@@ -157,7 +180,7 @@ namespace WalletEmulator
                             { "confirmations",transaction.confirmations},
                             { "time", transaction.time},
                             { "txid", transaction.txid},
-
+                            { "fee",GetFee(shortname)}
                         };
 
                         joe["result"] = jArrayTranasction;
@@ -239,6 +262,14 @@ namespace WalletEmulator
                         break;
                     }
 
+                case "settxfee":
+                {
+
+                    JToken token = JToken.Parse(clearInputString)["params"];
+                    double amount = (double)token[0];
+                    SetFee(shortname, amount);
+                    break;
+                }
 
                 case "sendtoaddress":
                 {
@@ -339,7 +370,7 @@ namespace WalletEmulator
         {
             foreach (Transaction transaction in _transactions)
             {
-                AddInfo(transaction.address.Substring(0, 3),string.Format("{0} {1} {2}", transaction.category,transaction.amount,transaction.address ));
+                AddInfo(transaction.address.Substring(0, 3),$"{transaction.category} {transaction.amount} {transaction.address}");
             }
         }
     }

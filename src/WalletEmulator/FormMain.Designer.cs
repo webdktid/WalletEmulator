@@ -37,6 +37,7 @@
             this.addTransActionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.getBalanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listTransactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.listViewOverview = new System.Windows.Forms.ListView();
@@ -46,7 +47,6 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.listBoxInfo = new System.Windows.Forms.ListBox();
-            this.listTransactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -75,7 +75,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -95,37 +95,44 @@
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.startToolStripMenuItem.Text = "Start";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
             // endToolStripMenuItem
             // 
             this.endToolStripMenuItem.Name = "endToolStripMenuItem";
-            this.endToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.endToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.endToolStripMenuItem.Text = "End";
             this.endToolStripMenuItem.Click += new System.EventHandler(this.endToolStripMenuItem_Click);
             // 
             // addTransActionToolStripMenuItem
             // 
             this.addTransActionToolStripMenuItem.Name = "addTransActionToolStripMenuItem";
-            this.addTransActionToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.addTransActionToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.addTransActionToolStripMenuItem.Text = "Add TransAction";
             this.addTransActionToolStripMenuItem.Click += new System.EventHandler(this.addTransActionToolStripMenuItem_Click);
             // 
             // getBalanceToolStripMenuItem
             // 
             this.getBalanceToolStripMenuItem.Name = "getBalanceToolStripMenuItem";
-            this.getBalanceToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.getBalanceToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.getBalanceToolStripMenuItem.Text = "GetBalance";
             this.getBalanceToolStripMenuItem.Click += new System.EventHandler(this.getBalanceToolStripMenuItem_Click);
             // 
             // clearToolStripMenuItem
             // 
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
+            // 
+            // listTransactionsToolStripMenuItem
+            // 
+            this.listTransactionsToolStripMenuItem.Name = "listTransactionsToolStripMenuItem";
+            this.listTransactionsToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.listTransactionsToolStripMenuItem.Text = "List transactions";
+            this.listTransactionsToolStripMenuItem.Click += new System.EventHandler(this.listTransactionsToolStripMenuItem_Click);
             // 
             // tabControl1
             // 
@@ -194,7 +201,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(780, 360);
+            this.tabPage2.Size = new System.Drawing.Size(780, 365);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Log";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -210,13 +217,6 @@
             this.listBoxInfo.Size = new System.Drawing.Size(768, 342);
             this.listBoxInfo.TabIndex = 2;
             // 
-            // listTransactionsToolStripMenuItem
-            // 
-            this.listTransactionsToolStripMenuItem.Name = "listTransactionsToolStripMenuItem";
-            this.listTransactionsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.listTransactionsToolStripMenuItem.Text = "List transactions";
-            this.listTransactionsToolStripMenuItem.Click += new System.EventHandler(this.listTransactionsToolStripMenuItem_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,7 +225,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip2);
             this.Name = "FormMain";
-            this.Text = "FormMain";
+            this.Text = "FormMain 1.1";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
