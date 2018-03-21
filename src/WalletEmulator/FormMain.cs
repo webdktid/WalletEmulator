@@ -83,6 +83,8 @@ namespace WalletEmulator
 
             SetStartValue();
 
+        
+
             _webserver = new MiniWebServer(SendResponse, _currencies.Select(x => appSettings[x.Key]).ToArray());
             _webserver.WebserverChange += _webserver_WebserverChange;
         }
@@ -241,6 +243,8 @@ namespace WalletEmulator
                         JToken token = JToken.Parse(clearInputString)["params"];
                         string aAddress = (string)token[0];
                         double amount = (double)token[1];
+                        int confirmations = (int)token[2];
+
 
                         if (!aAddress.StartsWith(shortname))
                             aAddress = shortname + "**" + aAddress;
@@ -250,7 +254,7 @@ namespace WalletEmulator
                             amount = amount,
                             address = aAddress,
                             category = "RECEIVE",
-                            confirmations = 10,
+                            confirmations = confirmations,
                             time = Convert.ToInt32(UnixTime.GetFromDateTime(DateTime.UtcNow.AddMinutes(-11))),
                             txid =  shortname +"-" + Guid.NewGuid(),
                             account = ""
