@@ -35,7 +35,7 @@ namespace WalletEmulator
         {
             if (_feeDictionary.ContainsKey(currency))
             {
-                return _feeDictionary[currency];
+                return _feeDictionary[currency]*-1;
             }
             return 0;
         }
@@ -296,6 +296,10 @@ namespace WalletEmulator
                         txid = shortname + "-" + Guid.NewGuid(),
                         account = ""
                     };
+
+                    if (amount > 0)
+                        t.amount = amount * -1;
+
                     _transactions.Add(t);
                     string txid = t.txid;
                     joe["result"] = new JValue(txid); 
@@ -358,10 +362,8 @@ namespace WalletEmulator
 
         double GetBlanace(string shortname)
         {
-            var inserts = _transactions.Where(x => x.address.StartsWith(shortname) && x.category == "RECEIVE").Sum(x => x.amount);
-            var payouts  = _transactions.Where(x => x.address.StartsWith(shortname) && x.category == "SEND").Sum(x => x.amount);
-
-            return inserts - payouts;
+            var amount = _transactions.Where(x => x.address.StartsWith(shortname) ).Sum(x => x.amount);
+            return amount; 
         }
 
         private void clearToolStripMenuItem_Click(object sender, EventArgs e)
